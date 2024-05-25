@@ -18,7 +18,7 @@ A Python script for backing up local and remote directories to Amazon S3. The sc
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/shuygyosha89/s3-backup.git
+   git clone https://github.com/shugyosha89/s3-backup.git
    ```
 
 2. **Install requirements**
