@@ -7,7 +7,7 @@ A Python script for backing up local and remote directories to Amazon S3. The sc
 - Configurable directories for local and remote backups
 - Supports different S3 storage classes
 - Organizes backups with date-based prefixes in S3
-- Logs operations using `logzero` for easy debugging and monitoring
+- Logs operations for easy debugging and monitoring
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ A Python script for backing up local and remote directories to Amazon S3. The sc
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/shuygyosha89/s3-glacier-backup.git
+   git clone https://github.com/shuygyosha89/s3-backup.git
    ```
 
 2. **Install requirements**
