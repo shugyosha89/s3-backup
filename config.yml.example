@@ -1,22 +1,44 @@
 settings:
-  tmp_dir: "/path/to/tmp"                   # Temporary directory for storing tarballs before upload.
-  log_file: "s3-backup.log"                 # Path to the log file.
-  s3_bucket: "your-s3-bucket-name"          # Name of the S3 bucket where backups will be stored.
-  s3_path_prefix: "backups/"                # Prefix for the S3 object keys
-  storage_class: "STANDARD"                 # S3 storage class for the uploaded objects.
-                                            # Options: STANDARD, INTELLIGENT_TIERING, STANDARD_IA, ONEZONE_IA, GLACIER, DEEP_ARCHIVE, REDUCED_REDUNDANCY
-  date_format: "%Y-%m-%d"                   # Date format used in S3 object keys (e.g., "2024-05-25").
-  log_level: "DEBUG"                        # Logging level.
-                                            # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  name: S3 Backup
+  tmp_dir: tmp
+  date_format: "%Y-%m-%d"
+  aws_profile: default
 
-local_dirs:
-  documents: "/home/user/Documents"         # Dictionary of local directories to back up.
-                                            # Key: A name for the tarball.
-                                            # Value: Path to the directory.
-  work-files: "/home/user/Work"
+s3:
+  bucket: my-bucket
+  path_prefix: backups/
+  storage_class: STANDARD
 
-remote_dirs:
-  videos: "user@machine:~/Videos"           # Dictionary of remote directories to back up.
-                                            # Make sure your SSH keys are set up for passwordless login.
-                                            # Key: A name for the tarball.
-                                            # Value: Remote host and path in the format "user@host:/path".
+backups:
+  - name: documents
+    driver: local
+    path: /home/user/Documents
+
+  - name: work
+    driver: ssh
+    path: user@machine:~/Documents/Work
+    key: /home/user/.ssh/id_rsa
+    port: 22
+
+loggers:
+  - driver: file
+    path: s3-backup.log
+    level: DEBUG
+
+  - driver: slack
+    webhook_url: https://hooks.slack.com/services/my-webhook
+    level: INFO
+    prepend: "@here"
+    prepend_level: ERROR
+
+  - driver: email
+    host: smtp.example.com
+    port: 587
+    username: smtp-user
+    password: smtp-password
+    from_name: S3 Backup
+    from_email: s3-backup@example.com
+    to_name: My Name
+    to_email: my-email@example.com
+    encryption: "tls"
+    level: "ERROR"
