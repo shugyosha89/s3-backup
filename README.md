@@ -104,7 +104,7 @@ backups:
     path: /home/user/Documents
     exclude:
       - "*.mp4"
-      - "secret/*"
+      - "/path/to/my/secrets"
 
   - name: work
     driver: ssh

@@ -11,7 +11,8 @@ class BackupDriver:
         tar_command = ["tar", *exclude_args, *["-czf", tar_path, "-C", dir_path, "."]]
         try:
             result = subprocess.run(tar_command, capture_output=True, text=True, check=True)
-            self._logger.debug(result.stdout)
+            if result.stdout:
+                self._logger.debug(result.stdout)
             if result.stderr:
                 self._logger.warning(result.stderr)
             return tar_path
