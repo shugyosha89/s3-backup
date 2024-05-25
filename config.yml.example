@@ -2,12 +2,12 @@ settings:
   name: S3 Backup
   tmp_dir: tmp
   date_format: "%Y-%m-%d"
-  aws_profile: default
 
 s3:
   bucket: my-bucket
   path_prefix: backups/
   storage_class: STANDARD
+  aws_profile: default
 
 backups:
   - name: documents

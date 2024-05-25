@@ -1,6 +1,5 @@
 import requests
 from logzero import logger
-from datetime import datetime
 from src.logging.driver import LogDriver
 
 class SlackLogDriver(LogDriver):

@@ -36,4 +36,3 @@ class S3Backup:
         end_time = time.time()
         time_taken = time.strftime("%H:%M:%S", time.gmtime(end_time - start_time))
         self._logger.info(f"Uploaded backups to S3:\n{yaml.dump(uploaded_keys)}\nTime taken: {time_taken}")
-        self._logger.error("This is an error message")

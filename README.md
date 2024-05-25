@@ -50,7 +50,6 @@ General script settings.
 * `name`: Prepended to log output. Useful if you run the script on more than one machine. Optional.
 * `tmp_dir`: Location to archive files before uploading them. Default: `tmp`. Optional.
 * `date_format`: Date format to use in archive file names. Default: `%Y-%m-%d`. Optional.
-* `aws_profile`: Name of the AWS profile to use when uploading to S3. Default: uses your default profile. Optional.
 
 #### Example
 ```
@@ -58,7 +57,6 @@ settings:
   name: S3 Backup
   tmp_dir: tmp
   date_format: "%Y-%m-%d"
-  aws_profile: default
 ```
 ### S3
 
@@ -67,6 +65,7 @@ S3 upload destination settings.
 * `bucket`: Name of the bucket to upload to. Required.
 * `path_prefix`: Prefix to append to S3 keys when uploading files. Default: None. Optional.
 * `storage_class`: Storage class to use when uploading to S3. Default: `STANDARD`. Optional.
+* `aws_profile`: Name of the AWS profile to use when uploading to S3. Default: uses your default profile. Optional.
 
   Available values: `STANDARD`, `INTELLIGENT_TIERING`, `STANDARD_IA`, `ONEZONE_IA`, `GLACIER`, `DEEP_ARCHIVE`, `REDUCED_REDUNDANCY`.
 
@@ -76,6 +75,7 @@ s3:
   bucket: my-bucket
   path_prefix: backups/
   storage_class: STANDARD
+  aws_profile: default
 ```
 
 ### Backups

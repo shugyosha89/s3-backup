@@ -7,7 +7,8 @@ class S3Manager:
         self._bucket = config['bucket']
         self._path_prefix = config.get('path_prefix', '')
         self._storage_class = config.get('storage_class', 'STANDARD')
-        self._client = boto3.client('s3')
+        session = boto3.Session(profile_name=config.get('profile', 'default'))
+        self._client = session.client('s3')
 
     def upload_all(self, files):
         all_keys = []
