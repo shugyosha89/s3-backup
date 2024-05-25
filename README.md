@@ -34,7 +34,7 @@ A Python script for backing up local and remote directories to Amazon S3. The sc
 4. **Run the script**
 
    ```sh
-   python backup.py
+   python main.py
    ```
 
    Make sure to run it as a user with the privileges to read and write from the configured locations.
