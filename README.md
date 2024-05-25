@@ -90,11 +90,11 @@ List of target directories or files to backup.
   Available values: `local`, `ssh`
 
 * `path`: Path to the file or directory to back up. Required.
+* ``exclude`: List of file patterns to exclude from the backup. Optional.
 
 #### SSH driver settings
 * `key`: Path to identity key file to use. Optional.
 * `port`: Port to connect to remote machine on. Optional.
-
 
 #### Example
 ```
@@ -102,6 +102,9 @@ backups:
   - name: documents
     driver: local
     path: /home/user/Documents
+    exclude:
+      - "*.mp4"
+      - "secret/*"
 
   - name: work
     driver: ssh

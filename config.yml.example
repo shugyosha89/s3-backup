@@ -13,6 +13,9 @@ backups:
   - name: documents
     driver: local
     path: /home/user/Documents
+    exclude:
+      - "*.mp4"
+      - "secret/*"
 
   - name: work
     driver: ssh
