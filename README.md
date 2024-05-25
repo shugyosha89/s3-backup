@@ -32,7 +32,7 @@ A Python script for backing up local and remote directories to Amazon S3. The sc
 
     Create a `config.yml` file with your chosen settings.
 
-    See `config.yml.example` for an example with a description of the settings.
+    See [`config.yml.example`](blob/master/config.yml.example) for an example with a description of the settings.
 
 4. **Run the script**
 
