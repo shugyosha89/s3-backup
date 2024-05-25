@@ -29,10 +29,13 @@ class S3Backup:
             shutil.rmtree(self._tmp_dir)
 
     def run(self):
-        start_time = time.time()
-        self._logger.debug("Starting S3 backup process")
-        uploaded_keys = self._s3.upload_all(self._backup.backup())
-        self._clean_up()
-        end_time = time.time()
-        time_taken = time.strftime("%H:%M:%S", time.gmtime(end_time - start_time))
-        self._logger.info(f"Uploaded backups to S3:\n{yaml.dump(uploaded_keys)}\nTime taken: {time_taken}")
+        try:
+            start_time = time.time()
+            self._logger.debug("Starting S3 backup process")
+            uploaded_keys = self._s3.upload_all(self._backup.backup())
+            self._clean_up()
+            end_time = time.time()
+            time_taken = time.strftime("%H:%M:%S", time.gmtime(end_time - start_time))
+            self._logger.info(f"Uploaded backups to S3:\n{yaml.dump(uploaded_keys)}\nTime taken: {time_taken}")
+        except Exception as e:
+            self._logger.critical(f"Backup failed: {str(e)}")
