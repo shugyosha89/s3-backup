@@ -15,7 +15,7 @@ class S3Backup:
         date_format = self._config.get('settings').get('date_format', '%Y-%m-%d')
         self._logger = LoggingManager(name, self._config['loggers'])
         self._backup = BackupManager(date_format, self._tmp_dir, self._config['backups'], self._logger)
-        self._s3 = S3Manager(self._config['s3'], self._logger)
+        self._s3 = S3Manager(name, date_format, self._config['s3'], self._logger)
         self._logger.debug(f"Running with config:\n{yaml.dump(self._config)}")
         os.makedirs(self._tmp_dir, exist_ok=True)
 

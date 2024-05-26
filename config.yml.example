@@ -5,7 +5,7 @@ settings:
 
 s3:
   bucket: my-bucket
-  path_prefix: backups/
+  path_prefix: backups/{date}/
   storage_class: STANDARD
   aws_profile: default
 

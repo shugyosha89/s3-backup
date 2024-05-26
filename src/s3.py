@@ -1,8 +1,11 @@
 import boto3
 import os
+from datetime import datetime
 
 class S3Manager:
-    def __init__(self, config, logger):
+    def __init__(self, name, date_format, config, logger):
+        self._name = name
+        self._date_format = date_format
         self._logger = logger
         self._bucket = config['bucket']
         self._path_prefix = config.get('path_prefix', '')
@@ -14,6 +17,8 @@ class S3Manager:
         all_keys = []
         for file_path in files:
             s3_key = f"{self._path_prefix}{os.path.basename(file_path)}"
+            s3_key = s3_key.replace('{date}', datetime.now().strftime(self._date_format))
+            s3_key = s3_key.replace('{name}', self._name or '')
             if self.try_upload(file_path, s3_key):
                 all_keys.append(s3_key)
         return all_keys
