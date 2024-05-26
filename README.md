@@ -101,7 +101,7 @@ The name of the tarball created is `{name}-{date}.tar.gzip`.
   Available values: `local`, `ssh`
 
 - `path`: Path to the file or directory to back up. Required.
-- ``exclude`: List of file patterns to exclude from the backup. Optional.
+- `exclude`: List of file patterns to exclude from the backup. Optional.
 
 #### SSH driver settings
 
