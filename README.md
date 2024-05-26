@@ -91,6 +91,8 @@ s3:
 
 List of target directories or files to backup.
 
+The name of the tarball created is `{name}-{date}.tar.gzip`.
+
 #### Backups common settings
 
 - `name`: File name of the archive file to create. Required.
