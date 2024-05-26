@@ -25,6 +25,7 @@ class SlackLogDriver(LogDriver):
             logger.error(f"Exception occurred while sending Slack notification: {str(e)}")
 
     def _format_message(self, message, level):
+        unformatted_message = message
         color = self.get_color(level)
         if self._prepend and self._should_log(level, self._prepend_level):
             message = f"{self._prepend}\n{message}"
@@ -32,6 +33,7 @@ class SlackLogDriver(LogDriver):
         if self._name:
             message = f"*{self._name}*\n{message}"
         return {
+            "text": unformatted_message,
             "attachments": [
                 {
                     "color": color,
